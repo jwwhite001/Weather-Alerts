@@ -78,10 +78,10 @@ def parseAlertTime(s) {
 
 def Alerts(evt)  {
     def result = getTwcLocation(zipCode)
-    def latitude = ${result.location['latitude']}
-    def longitude = ${result.location['longitude']}
+    def latitude = result.location['latitude']
+    def longitude = result.location['longitude']
 
-	def alerts = getTwcAlerts(latitude,longitude)
+	def alerts = getTwcAlerts("${latitude},${longitude}")
         if (alerts) {
             alerts.eachWithIndex {alert,index ->
                 def msg = alert.headlineText
@@ -123,10 +123,10 @@ def Alerts(evt)  {
 
 def manlAlerts(evt)  {
     def result = getTwcLocation(zipCode)
-    def latitude = ${result.location['latitude']}
-    def longitude = ${result.location['longitude']}
+    def latitude = result.location['latitude']
+    def longitude = result.location['longitude']
 
-	def alerts = getTwcAlerts(latitude,longitude)
+	def alerts = getTwcAlerts("${latitude},${longitude}")
         if (alerts) {
             alerts.eachWithIndex {alert,index ->
                 def msg = alert.headlineText
